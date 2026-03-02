@@ -3,678 +3,342 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IES GROUP – Project Submission</title>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <title>IES Group – Project Submission</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --blue: #1B4F8A;
-      --blue-mid: #2A6FC1;
-      --blue-light: #5B9FE8;
-      --grey-bg: #F2F4F7;
-      --grey-mid: #D0D7E3;
-      --grey-dark: #8A95A8;
-      --white: #FFFFFF;
-      --text: #1A2033;
-      --success: #2ECC71;
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Barlow', sans-serif;
-      background: var(--grey-bg);
+      background: #F2F4F7;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 0 0 80px 0;
+      padding-bottom: 100px;
     }
-
-    /* HEADER */
     header {
-      width: 100%;
-      background: var(--blue);
-      padding: 16px 40px;
+      background: #1B4F8A;
+      padding: 18px 32px;
       display: flex;
       align-items: center;
-      gap: 18px;
-      box-shadow: 0 4px 20px rgba(27,79,138,0.25);
+      gap: 16px;
     }
-
-    .logo-box {
-      height: 56px;
-      display: flex; align-items: center;
-      flex-shrink: 0;
-    }
-
-    .logo-box img {
-      height: 56px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .header-text h1 {
+    header h1 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 26px; font-weight: 700;
-      color: var(--white);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-    .header-text p {
-      font-size: 13px; color: rgba(255,255,255,0.65);
-      font-weight: 300; letter-spacing: 0.5px;
-    }
-
-    /* CARD */
-    .card {
-      background: var(--white);
-      border-radius: 14px;
-      width: 100%;
-      max-width: 620px;
-      margin: 40px 20px 0;
-      box-shadow: 0 8px 40px rgba(27,79,138,0.10);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .card-header {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
-      padding: 28px 36px 22px;
-    }
-
-    .card-header h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 22px; font-weight: 600;
-      color: var(--white);
+      color: white;
+      font-size: 24px;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-
-    .card-header p {
-      font-size: 13px; color: rgba(255,255,255,0.7);
-      margin-top: 4px; font-weight: 300;
+    header p { color: rgba(255,255,255,0.6); font-size: 13px; }
+    .card {
+      max-width: 580px;
+      margin: 36px auto 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 30px rgba(27,79,138,0.10);
+      overflow: hidden;
     }
-
-    .step-dots {
-      display: flex; gap: 8px; margin-top: 16px;
+    .card-top {
+      background: linear-gradient(135deg, #1B4F8A, #2A6FC1);
+      padding: 24px 32px 20px;
     }
-    .step-dot {
-      width: 28px; height: 4px; border-radius: 2px;
-      background: rgba(255,255,255,0.25);
-      transition: background 0.3s;
+    .card-top h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: white; font-size: 20px;
+      letter-spacing: 1px; text-transform: uppercase;
     }
-    .step-dot.active { background: var(--white); }
-    .step-dot.done { background: var(--blue-light); }
-
-    /* FORM BODY */
-    .card-body { padding: 32px 36px; }
-
-    .step {
-      display: none;
-      opacity: 0;
-      transform: translateX(24px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-    }
-    .step.active {
-      display: block;
-      opacity: 1;
-      transform: translateX(0);
-      animation: slideIn 0.35s ease forwards;
-    }
-    .step.exit {
-      animation: slideOut 0.25s ease forwards;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(24px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes slideOut {
-      from { opacity: 1; transform: translateX(0); }
-      to   { opacity: 0; transform: translateX(-24px); }
-    }
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(-24px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes slideOutRight {
-      from { opacity: 1; transform: translateX(0); }
-      to   { opacity: 0; transform: translateX(24px); }
-    }
-
-    .field { margin-bottom: 22px; }
-
+    .card-top p { color: rgba(255,255,255,0.65); font-size: 13px; margin-top: 4px; }
+    .card-body { padding: 28px 32px; }
+    .field { margin-bottom: 20px; }
     label {
       display: block;
-      font-size: 12px; font-weight: 500;
-      color: var(--grey-dark);
+      font-size: 11px; font-weight: 500;
+      color: #8A95A8;
       text-transform: uppercase; letter-spacing: 0.8px;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
-
     input, select, textarea {
       width: 100%;
-      padding: 13px 16px;
-      border: 1.5px solid var(--grey-mid);
+      padding: 12px 14px;
+      border: 1.5px solid #D0D7E3;
       border-radius: 8px;
       font-family: 'Barlow', sans-serif;
       font-size: 15px;
-      color: var(--text);
-      background: var(--grey-bg);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      color: #1A2033;
+      background: #F2F4F7;
       outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
     }
-
     input:focus, select:focus, textarea:focus {
-      border-color: var(--blue-mid);
+      border-color: #2A6FC1;
       box-shadow: 0 0 0 3px rgba(42,111,193,0.12);
-      background: var(--white);
+      background: white;
     }
-
     select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A95A8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
+      background-position: right 14px center;
+      padding-right: 36px;
       cursor: pointer;
     }
-
-    textarea { resize: vertical; min-height: 100px; }
-
-    .error-msg {
-      font-size: 12px; color: #e74c3c;
-      margin-top: 5px; display: none;
-    }
-
-    .field.has-error input,
-    .field.has-error select,
-    .field.has-error textarea {
-      border-color: #e74c3c;
-    }
-    .field.has-error .error-msg { display: block; }
-
-    /* BUTTONS */
-    .btn-row {
-      display: flex; gap: 12px; margin-top: 10px;
-      justify-content: flex-end;
-    }
-
+    textarea { resize: vertical; min-height: 90px; }
     .btn {
-      padding: 13px 28px;
-      border: none; border-radius: 8px;
+      width: 100%;
+      padding: 14px;
+      background: #1B4F8A;
+      color: white;
+      border: none;
+      border-radius: 8px;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px; font-weight: 600;
-      letter-spacing: 0.8px; text-transform: uppercase;
+      font-size: 17px; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.1s;
     }
-
-    .btn-secondary {
-      background: var(--grey-bg);
-      color: var(--grey-dark);
-      border: 1.5px solid var(--grey-mid);
-    }
-    .btn-secondary:hover { background: var(--grey-mid); color: var(--text); }
-
-    .btn-primary {
-      background: var(--blue);
-      color: var(--white);
-      box-shadow: 0 4px 14px rgba(27,79,138,0.3);
-    }
-    .btn-primary:hover {
-      background: var(--blue-mid);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(27,79,138,0.35);
-    }
-    .btn-primary:active { transform: translateY(0); }
-
-    /* REVIEW PANEL */
-    .review-panel {
-      background: var(--grey-bg);
-      border-radius: 10px;
-      padding: 20px 22px;
-      margin-bottom: 22px;
-    }
-
-    .review-panel h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px; font-weight: 600;
-      color: var(--blue); text-transform: uppercase;
-      letter-spacing: 1px; margin-bottom: 14px;
-    }
-
-    .review-row {
-      display: flex; justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--grey-mid);
-      gap: 12px;
-    }
-    .review-row:last-child { border-bottom: none; }
-
-    .review-label {
-      font-size: 12px; color: var(--grey-dark);
-      text-transform: uppercase; letter-spacing: 0.5px;
-      font-weight: 500; flex-shrink: 0;
-    }
-    .review-value {
-      font-size: 14px; color: var(--text);
-      text-align: right; word-break: break-word;
-      font-weight: 500;
-    }
+    .btn:hover { background: #2A6FC1; transform: translateY(-1px); }
+    .btn:disabled { background: #8A95A8; cursor: not-allowed; transform: none; }
 
     /* SUCCESS */
-    .success-screen {
-      display: none;
-      text-align: center;
-      padding: 20px 0 10px;
-    }
-
+    .success { display: none; text-align: center; padding: 32px 20px; }
     .success-icon {
       width: 64px; height: 64px;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      background: linear-gradient(135deg, #1B4F8A, #5B9FE8);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 20px;
-      font-size: 28px;
+      font-size: 28px; color: white;
     }
-
-    .success-screen h2 {
+    .success h2 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 26px; font-weight: 700;
-      color: var(--blue); margin-bottom: 8px;
+      font-size: 26px; color: #1B4F8A; margin-bottom: 8px;
     }
-    .success-screen p {
-      font-size: 15px; color: var(--grey-dark);
-      line-height: 1.6; margin-bottom: 24px;
-    }
-
-    .ref-badge {
+    .success p { color: #8A95A8; font-size: 15px; margin-bottom: 20px; }
+    .ref {
       display: inline-block;
-      background: var(--grey-bg);
-      border: 1.5px solid var(--grey-mid);
+      background: #F2F4F7;
+      border: 1.5px solid #D0D7E3;
       border-radius: 8px;
-      padding: 10px 20px;
+      padding: 10px 24px;
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 16px; font-weight: 600;
-      color: var(--blue); letter-spacing: 1px;
-      margin-bottom: 26px;
+      color: #1B4F8A; letter-spacing: 1px;
+      margin-bottom: 24px;
     }
+    .btn-new {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #1B4F8A; color: white;
+      border: none; border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer;
+    }
+    .error-msg { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; }
+    .has-error input, .has-error select, .has-error textarea { border-color: #e74c3c; }
+    .has-error .error-msg { display: block; }
 
-    /* BOTTOM PROGRESS BAR */
-    .progress-bar-container {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--white);
-      border-top: 1.5px solid var(--grey-mid);
-      padding: 14px 24px 18px;
+    /* PROGRESS BAR */
+    .progress-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: white;
+      border-top: 1.5px solid #D0D7E3;
+      padding: 12px 20px 16px;
       box-shadow: 0 -4px 20px rgba(27,79,138,0.08);
-      z-index: 100;
     }
-
-    .progress-summary {
-      display: flex;
-      gap: 0;
-      align-items: stretch;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    .progress-field {
-      flex: 1;
-      padding: 6px 10px;
-      border-right: 1px solid var(--grey-mid);
-      min-width: 0;
-    }
-    .progress-field:last-child { border-right: none; }
-
-    .pf-label {
-      font-size: 10px; color: var(--grey-dark);
-      text-transform: uppercase; letter-spacing: 0.5px;
-      margin-bottom: 3px;
-    }
-
-    .pf-value {
-      font-size: 12px; font-weight: 500; color: var(--text);
-      white-space: nowrap; overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .pf-value.empty { color: var(--grey-mid); font-style: italic; }
-
     .progress-track {
-      height: 3px;
-      background: var(--grey-mid);
-      border-radius: 2px;
-      margin-bottom: 10px;
-      max-width: 620px;
-      margin-left: auto; margin-right: auto;
+      height: 3px; background: #D0D7E3;
+      border-radius: 2px; margin-bottom: 10px;
+      max-width: 580px; margin-left: auto; margin-right: auto;
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+      background: linear-gradient(90deg, #1B4F8A, #5B9FE8);
       border-radius: 2px;
       transition: width 0.4s ease;
       width: 0%;
     }
-
-    @media (max-width: 480px) {
-      .card-body { padding: 24px 20px; }
-      .card-header { padding: 22px 20px 18px; }
-      header { padding: 18px 20px; }
-      .pf-label { font-size: 9px; }
-      .pf-value { font-size: 11px; }
+    .progress-fields {
+      display: flex; max-width: 580px;
+      margin: 0 auto;
     }
+    .pf {
+      flex: 1; padding: 4px 8px;
+      border-right: 1px solid #D0D7E3;
+      min-width: 0;
+    }
+    .pf:last-child { border-right: none; }
+    .pf-label { font-size: 9px; color: #8A95A8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .pf-val { font-size: 11px; font-weight: 500; color: #1A2033; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pf-val.empty { color: #D0D7E3; }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-box"><img src="IES_logo_new-_FINAL.png" alt="IES Group" /></div>
-  <div class="header-text">
+  <div>
     <h1>IES Group</h1>
     <p>Internal Project Submission Portal</p>
   </div>
 </header>
 
-<div class="card" id="mainCard">
-
-  <div class="card-header">
+<div class="card">
+  <div class="card-top">
     <h2>New Project Submission</h2>
-    <p>Complete all fields — data is submitted directly to head office.</p>
-    <div class="step-dots">
-      <div class="step-dot active" id="dot0"></div>
-      <div class="step-dot" id="dot1"></div>
-      <div class="step-dot" id="dot2"></div>
-    </div>
+    <p>All fields required — submitted directly to head office.</p>
   </div>
 
-  <div class="card-body">
-
-    <!-- STEP 1: Location & Client -->
-    <div class="step active" id="step0">
-      <div class="field" id="field-staffname">
-        <label>Staff Member Name</label>
-        <input type="text" id="staffname" placeholder="e.g. John Dlamini" oninput="updatePreview()" />
-        <span class="error-msg">Please enter your name.</span>
-      </div>
-
-      <div class="field" id="field-country">
-        <label>Country / Division</label>
-        <select id="country" onchange="updatePreview()">
-          <option value="">— Select a division —</option>
-          <option value="IES Zambia">IES Zambia</option>
-          <option value="IES Congo">IES Congo</option>
-          <option value="IES South Africa">IES South Africa</option>
-        </select>
-        <span class="error-msg">Please select a country.</span>
-      </div>
-
-      <div class="field" id="field-client">
-        <label>Client Name</label>
-        <input type="text" id="client" placeholder="e.g. Acme Corporation" oninput="updatePreview()" />
-        <span class="error-msg">Client name is required.</span>
-      </div>
-
-      <div class="btn-row">
-        <button class="btn btn-primary" onclick="goNext(0)">Next →</button>
-      </div>
+  <!-- FORM -->
+  <div class="card-body" id="formSection">
+    <div class="field" id="f-staff">
+      <label>Staff Member Name</label>
+      <input type="text" id="staff" placeholder="Your full name" oninput="sync()"/>
+      <div class="error-msg">Please enter your name.</div>
     </div>
-
-    <!-- STEP 2: Contact Details -->
-    <div class="step" id="step1">
-      <div class="field" id="field-phone">
-        <label>Contact Number</label>
-        <input type="tel" id="phone" placeholder="e.g. +27 11 000 0000" oninput="updatePreview()" />
-        <span class="error-msg">Please enter a contact number.</span>
-      </div>
-
-      <div class="field" id="field-email">
-        <label>Client Email</label>
-        <input type="email" id="email" placeholder="e.g. contact@client.com" oninput="updatePreview()" />
-        <span class="error-msg">Please enter a valid email address.</span>
-      </div>
-
-      <div class="btn-row">
-        <button class="btn btn-secondary" onclick="goBack(1)">← Back</button>
-        <button class="btn btn-primary" onclick="goNext(1)">Next →</button>
-      </div>
+    <div class="field" id="f-country">
+      <label>Country / Division</label>
+      <select id="country" onchange="sync()">
+        <option value="">— Select a division —</option>
+        <option>IES Zambia</option>
+        <option>IES Congo</option>
+        <option>IES South Africa</option>
+      </select>
+      <div class="error-msg">Please select a division.</div>
     </div>
-
-    <!-- STEP 3: Notes & Review -->
-    <div class="step" id="step2">
-      <div class="field" id="field-notes">
-        <label>General Notes</label>
-        <textarea id="notes" placeholder="Describe the project, scope, or any important details…" oninput="updatePreview()"></textarea>
-      </div>
-
-      <div class="review-panel">
-        <h3>Review Your Submission</h3>
-        <div class="review-row"><span class="review-label">Staff Member</span><span class="review-value" id="rv-staffname">—</span></div>
-        <div class="review-row"><span class="review-label">Division</span><span class="review-value" id="rv-country">—</span></div>
-        <div class="review-row"><span class="review-label">Client</span><span class="review-value" id="rv-client">—</span></div>
-        <div class="review-row"><span class="review-label">Phone</span><span class="review-value" id="rv-phone">—</span></div>
-        <div class="review-row"><span class="review-label">Email</span><span class="review-value" id="rv-email">—</span></div>
-        <div class="review-row"><span class="review-label">Notes</span><span class="review-value" id="rv-notes">—</span></div>
-      </div>
-
-      <div class="btn-row">
-        <button class="btn btn-secondary" onclick="goBack(2)">← Back</button>
-        <button class="btn btn-primary" onclick="submitForm()">Submit Project ✓</button>
-      </div>
+    <div class="field" id="f-client">
+      <label>Client Name</label>
+      <input type="text" id="client" placeholder="e.g. Acme Corporation" oninput="sync()"/>
+      <div class="error-msg">Please enter a client name.</div>
     </div>
-
-    <!-- SUCCESS -->
-    <div class="success-screen" id="successScreen">
-      <div class="success-icon">✓</div>
-      <h2>Submission Received</h2>
-      <p>Your project has been sent securely to IES head office. You will be contacted if further information is needed.</p>
-      <div class="ref-badge" id="refBadge">REF #—</div>
-      <br/>
-      <button class="btn btn-primary" onclick="resetForm()">Submit Another</button>
+    <div class="field" id="f-phone">
+      <label>Contact Number</label>
+      <input type="tel" id="phone" placeholder="e.g. +27 11 000 0000" oninput="sync()"/>
+      <div class="error-msg">Please enter a contact number.</div>
     </div>
+    <div class="field" id="f-email">
+      <label>Client Email</label>
+      <input type="email" id="email" placeholder="e.g. client@company.com" oninput="sync()"/>
+      <div class="error-msg">Please enter a valid email.</div>
+    </div>
+    <div class="field">
+      <label>General Notes</label>
+      <textarea id="notes" placeholder="Describe the project or any important details…" oninput="sync()"></textarea>
+    </div>
+    <div id="formError" style="color:#e74c3c;font-size:13px;margin-bottom:10px;display:none;">Please fill in all required fields.</div>
+    <button class="btn" id="submitBtn" onclick="submitForm()">Submit Project</button>
+  </div>
 
+  <!-- SUCCESS -->
+  <div class="success" id="successSection">
+    <div class="success-icon">✓</div>
+    <h2>Submission Received</h2>
+    <p>Your project has been sent to IES head office successfully.</p>
+    <div class="ref" id="refNum">REF #—</div><br/>
+    <button class="btn-new" onclick="reset()">Submit Another</button>
   </div>
 </div>
 
-<!-- BOTTOM PROGRESS BAR -->
-<div class="progress-bar-container">
-  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-  <div class="progress-summary">
-    <div class="progress-field">
-      <div class="pf-label">Division</div>
-      <div class="pf-value empty" id="pb-country">Not set</div>
-    </div>
-    <div class="progress-field">
-      <div class="pf-label">Client</div>
-      <div class="pf-value empty" id="pb-client">Not set</div>
-    </div>
-    <div class="progress-field">
-      <div class="pf-label">Phone</div>
-      <div class="pf-value empty" id="pb-phone">Not set</div>
-    </div>
-    <div class="progress-field">
-      <div class="pf-label">Email</div>
-      <div class="pf-value empty" id="pb-email">Not set</div>
-    </div>
-    <div class="progress-field">
-      <div class="pf-label">Notes</div>
-      <div class="pf-value empty" id="pb-notes">Not set</div>
-    </div>
+<!-- PROGRESS BAR -->
+<div class="progress-bar">
+  <div class="progress-track"><div class="progress-fill" id="pFill"></div></div>
+  <div class="progress-fields">
+    <div class="pf"><div class="pf-label">Staff</div><div class="pf-val empty" id="p-staff">—</div></div>
+    <div class="pf"><div class="pf-label">Division</div><div class="pf-val empty" id="p-country">—</div></div>
+    <div class="pf"><div class="pf-label">Client</div><div class="pf-val empty" id="p-client">—</div></div>
+    <div class="pf"><div class="pf-label">Phone</div><div class="pf-val empty" id="p-phone">—</div></div>
+    <div class="pf"><div class="pf-label">Email</div><div class="pf-val empty" id="p-email">—</div></div>
+    <div class="pf"><div class="pf-label">Notes</div><div class="pf-val empty" id="p-notes">—</div></div>
   </div>
 </div>
-
-
 
 <script>
-  let currentStep = 0;
-  const totalSteps = 3;
-
-  function updatePreview() {
-    const staffname = document.getElementById('staffname').value.trim();
-    const country = document.getElementById('country').value;
-    const client  = document.getElementById('client').value.trim();
-    const phone   = document.getElementById('phone').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const notes   = document.getElementById('notes').value.trim();
-
-    // Review panel
-    document.getElementById('rv-staffname').textContent = staffname || '—';
-    document.getElementById('rv-country').textContent = country || '—';
-    document.getElementById('rv-client').textContent  = client  || '—';
-    document.getElementById('rv-phone').textContent   = phone   || '—';
-    document.getElementById('rv-email').textContent   = email   || '—';
-    document.getElementById('rv-notes').textContent   = notes   || '—';
-
-    // Progress bar values
-    setProgressValue('pb-staffname', staffname);
-    setProgressValue('pb-country', country);
-    setProgressValue('pb-client',  client);
-    setProgressValue('pb-phone',   phone);
-    setProgressValue('pb-email',   email);
-    setProgressValue('pb-notes',   notes ? (notes.length > 12 ? notes.slice(0,12)+'…' : notes) : '');
-
-    // Progress fill % based on filled fields
-    const filled = [staffname,country,client,phone,email,notes].filter(v => v.length > 0).length;
-    document.getElementById('progressFill').style.width = (filled / 6 * 100) + '%';
+  function sync() {
+    const fields = ['staff','country','client','phone','email','notes'];
+    const vals = fields.map(id => document.getElementById(id).value.trim());
+    const filled = vals.filter(v => v).length;
+    document.getElementById('pFill').style.width = (filled / fields.length * 100) + '%';
+    fields.forEach((id, i) => {
+      const el = document.getElementById('p-' + id);
+      const v = vals[i];
+      el.textContent = v ? (v.length > 12 ? v.slice(0,12)+'…' : v) : '—';
+      el.className = 'pf-val' + (v ? '' : ' empty');
+    });
   }
 
-  function setProgressValue(id, val) {
-    const el = document.getElementById(id);
-    if (val) {
-      el.textContent = val.length > 12 ? val.slice(0,12)+'…' : val;
-      el.classList.remove('empty');
+  function validate() {
+    let ok = true;
+    const required = ['staff','country','client','phone'];
+    required.forEach(id => {
+      const field = document.getElementById('f-' + id);
+      const val = document.getElementById(id).value.trim();
+      if (!val) { field.classList.add('has-error'); ok = false; }
+      else { field.classList.remove('has-error'); }
+    });
+    const emailVal = document.getElementById('email').value.trim();
+    const emailField = document.getElementById('f-email');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      emailField.classList.add('has-error'); ok = false;
     } else {
-      el.textContent = 'Not set';
-      el.classList.add('empty');
+      emailField.classList.remove('has-error');
     }
-  }
-
-  function goNext(fromStep) {
-    if (!validateStep(fromStep)) return;
-    animateStep(fromStep, fromStep + 1, 'forward');
-  }
-
-  function goBack(fromStep) {
-    animateStep(fromStep, fromStep - 1, 'back');
-  }
-
-  function animateStep(from, to, direction) {
-    const fromEl = document.getElementById('step' + from);
-    const toEl   = document.getElementById('step' + to);
-
-    fromEl.style.animation = direction === 'forward'
-      ? 'slideOut 0.25s ease forwards'
-      : 'slideOutRight 0.25s ease forwards';
-
-    setTimeout(() => {
-      fromEl.classList.remove('active');
-      fromEl.style.animation = '';
-      toEl.style.animation = direction === 'forward'
-        ? 'slideIn 0.35s ease forwards'
-        : 'slideInRight 0.35s ease forwards';
-      toEl.classList.add('active');
-      currentStep = to;
-      updateDots(to);
-    }, 220);
-  }
-
-  function updateDots(n) {
-    for (let i = 0; i < totalSteps; i++) {
-      const dot = document.getElementById('dot'+i);
-      dot.classList.remove('active','done');
-      if (i < n) dot.classList.add('done');
-      else if (i === n) dot.classList.add('active');
-    }
-  }
-
-  function validateStep(step) {
-    let valid = true;
-    if (step === 0) {
-      valid = requireField('staffname', 'field-staffname') & requireField('country', 'field-country') & requireField('client', 'field-client') && valid;
-    } else if (step === 1) {
-      const emailVal = document.getElementById('email').value;
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
-      valid = requireField('phone', 'field-phone');
-      const emailField = document.getElementById('field-email');
-      if (!emailOk) {
-        emailField.classList.add('has-error');
-        valid = false;
-      } else {
-        emailField.classList.remove('has-error');
-      }
-    }
-    return valid;
-  }
-
-  function requireField(inputId, fieldId) {
-    const val = document.getElementById(inputId).value;
-    const field = document.getElementById(fieldId);
-    if (!val || val.trim() === '') {
-      field.classList.add('has-error');
-      return false;
-    }
-    field.classList.remove('has-error');
-    return true;
+    return ok;
   }
 
   function submitForm() {
-    updatePreview();
+    if (!validate()) {
+      document.getElementById('formError').style.display = 'block';
+      return;
+    }
+    document.getElementById('formError').style.display = 'none';
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
 
     const data = {
-      staffname: document.getElementById('staffname').value.trim(),
-      country: document.getElementById('country').value,
-      client:  document.getElementById('client').value.trim(),
-      phone:   document.getElementById('phone').value.trim(),
-      email:   document.getElementById('email').value.trim(),
-      notes:   document.getElementById('notes').value.trim()
+      'Staff Member': document.getElementById('staff').value.trim(),
+      'Division':     document.getElementById('country').value,
+      'Client Name':  document.getElementById('client').value.trim(),
+      'Phone':        document.getElementById('phone').value.trim(),
+      'Email':        document.getElementById('email').value.trim(),
+      'Notes':        document.getElementById('notes').value.trim()
     };
 
-    // Submit to Formspree
     fetch('https://formspree.io/f/mkovlzbv', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
-    }).then(res => {
-      if (!res.ok) { alert('Submission failed. Please try again.'); return; }
-      showSuccess();
-    }).catch(() => { alert('Network error. Please try again.'); });
-    return;
-
+    })
+    .then(res => {
+      if (res.ok) {
+        document.getElementById('formSection').style.display = 'none';
+        const s = document.getElementById('successSection');
+        s.style.display = 'block';
+        const ref = 'IES-' + Date.now().toString(36).toUpperCase().slice(-6);
+        document.getElementById('refNum').textContent = 'REF # ' + ref;
+        document.getElementById('pFill').style.width = '100%';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Submit Project';
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'Submit Project';
+      alert('Network error. Please check your connection and try again.');
+    });
   }
 
-  function showSuccess() {
-    document.querySelectorAll('.step').forEach(s => {
-      s.classList.remove('active');
-      s.style.display = 'none';
-    });
-    const success = document.getElementById('successScreen');
-    success.style.display = 'block';
-    success.style.opacity = '1';
-    document.querySelectorAll('.step-dot').forEach(d => {
-      d.classList.remove('active');
-      d.classList.add('done');
-    });
-    const ref = 'IES-' + Date.now().toString(36).toUpperCase().slice(-6);
-    document.getElementById('refBadge').textContent = 'REF # ' + ref;
-    document.getElementById('progressFill').style.width = '100%';
-  }
-
-  function resetForm() {
-    document.getElementById('staffname').value = '';
+  function reset() {
+    ['staff','client','phone','email','notes'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('country').value = '';
-    document.getElementById('client').value  = '';
-    document.getElementById('phone').value   = '';
-    document.getElementById('email').value   = '';
-    document.getElementById('notes').value   = '';
-    document.getElementById('successScreen').style.display = 'none';
-    document.querySelectorAll('.step').forEach(s => { s.style.display = ''; s.style.animation = ''; });
-    currentStep = 0;
-    document.getElementById('step0').classList.add('active');
-    updateDots(0);
-    updatePreview();
+    document.getElementById('formSection').style.display = 'block';
+    document.getElementById('successSection').style.display = 'none';
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').textContent = 'Submit Project';
+    sync();
   }
-
-  updatePreview();
 </script>
 </body>
 </html>
