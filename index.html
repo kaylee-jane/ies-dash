@@ -638,11 +638,16 @@
     };
 
     // Submit to Netlify
-    const formData = new FormData();
-    formData.append('form-name', 'ies-project');
-    Object.entries(data).forEach(([k,v]) => formData.append(k,v));
+    const encode = (obj) =>
+      Object.keys(obj)
+        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k]))
+        .join('&');
 
-    fetch('/', { method: 'POST', body: formData }).catch(() => {});
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'ies-project', ...data })
+    }).catch(() => {});
 
     // Show success
     document.querySelectorAll('.step').forEach(s => { s.classList.remove('active'); s.style.display='none'; });
